@@ -32,3 +32,23 @@ button{
     flex-basis:50%;
     padding:30px;
 }
+
+.card{
+    box-shadow:0px 0px 2px 2px black;
+    padding:10px;
+    text-align:center;
+}
+.card>p{
+font-weight: 300;
+color:grey;
+}
+.doctorparent{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin:20px;
+}
+.doctorparent>div{
+    flex-basis:30%;
+}
