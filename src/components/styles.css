@@ -52,3 +52,23 @@ color:grey;
 .doctorparent>div{
     flex-basis:30%;
 }
+
+/* form stylings */
+
+
+.form-container{
+    width:33%;
+    margin:auto;
+    border:2px solid black;
+    padding:20px;
+}
+.text-field,select,.form-container button{
+display:block;
+padding:10px;
+width:100%;
+margin:10px;
+}
+.form-container button{
+    background:black;
+    color:white;
+}
