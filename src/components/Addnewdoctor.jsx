@@ -1,23 +1,26 @@
 
 import { useState } from "react"
+import Home from "./Home"
 function Addnewdoctor() {
   const [name,setName]=useState('')
   const [gender,setGender]=useState('')
   const [age,setAge]=useState('')
   const [salary,setSalary]=useState('')
   const [specialization,setSpecialization]=useState('')
+  let [newdoctor,setNewdoctor]=useState(null)
 
   function handlesubmit(e){
     e.preventDefault()
-    let newdoctor={
-      name,age,gender,salary,specialization
+    let formdata={  
+      name,age,gender,salary,specialization,id:Date.now()
     }
-    console.log(newdoctor)
+    setNewdoctor(formdata)
+    
   }
   
   return (
     <div >
-      <h1>Add New Doctor</h1>
+      <h1 style={{textAlign:'center'}}>Add New Doctor</h1>
       <form action="" className='form-container' onSubmit={handlesubmit}>
         <input value={name} onChange={(e)=>setName(e.target.value)} type="text" placeholder='Enter Doctor Name' className='text-field'/>
         <input value={age} onChange={(e)=>setAge(e.target.value)} type="text" placeholder='Enter Age' className='text-field'/>
@@ -32,6 +35,7 @@ function Addnewdoctor() {
         <input value={salary} type="text" onChange={(e)=>setSalary(e.target.value)} placeholder='Enter Salary' className='text-field'/>
         <button  type='submit' > Add Doctor</button>
       </form>
+      <Home newdoctor={newdoctor}/>
     </div>
   )
 }
