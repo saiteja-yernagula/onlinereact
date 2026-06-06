@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Doctorcard from "./Doctorcard";
-function Home({newdoctor}) {
+function Home({ newdoctor }) {
   let [doctors, setDoctors] = useState([]);
+  let [search, setSearch] = useState("");
+  let [specialization, setSpecialization] = useState("");
 
-   function fetchdata() {
+  function fetchdata() {
     let data = [
       {
         id: 1,
@@ -40,21 +42,59 @@ function Home({newdoctor}) {
     fetchdata();
   }, []);
 
-  useEffect(()=>{
-    if(newdoctor){
-        setDoctors(prev=>[...prev,newdoctor])
+  useEffect(() => {
+    if (newdoctor) {
+      setDoctors((prev) => [...prev, newdoctor]);
     }
+  }, [newdoctor]);
 
-  },[newdoctor])
+  const filtereddoctors=doctors.filter((val)=>{
+    console.log()
+    console.log(search)
+    return (
+      val.name.toLowerCase().includes(search.toLowerCase())
+      &&
+      (specialization=="" || val.specialization==specialization)
+    )
+  })
   return (
-    <div>{doctors.length > 0 ?
-    <div className='doctorparent'>
-      {doctors.map((doctor)=>{
-        return (
-            <Doctorcard key={doctor.id}  name={doctor.name} gender={doctor.gender} specialization={doctor.specialization}/>
-        )
-      })}
-    </div> : <h1>no doctors found</h1>}</div>
+    <div>
+      <div className="filters">
+        <input
+          type="text"
+          className="text-field"
+          value={search}
+          placeholder="search doctor"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <select
+          className="text-field"
+          value={specialization}
+          onChange={(e) => setSpecialization(e.target.value)}
+        >
+          <option value="Muscles">Muscles</option>
+          <option value="Bones">Bones</option>
+          <option value="Heart">Heart</option>
+        </select>
+      </div>
+      {filtereddoctors.length > 0 ? (
+        <div className="doctorparent">
+          {filtereddoctors.map((doctor) => {
+            return (
+              <Doctorcard
+                key={doctor.id}
+                name={doctor.name}
+                gender={doctor.gender}
+                specialization={doctor.specialization}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <h1>no doctors found</h1>
+      )}
+    </div>
   );
 }
 
