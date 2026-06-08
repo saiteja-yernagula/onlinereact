@@ -87,6 +87,7 @@ function Home({ newdoctor }) {
                 name={doctor.name}
                 gender={doctor.gender}
                 specialization={doctor.specialization}
+                id={doctor.id}
               />
             );
           })}
