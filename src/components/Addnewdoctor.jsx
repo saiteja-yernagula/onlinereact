@@ -21,8 +21,14 @@ function Addnewdoctor() {
     };
     await axios.post("https://doc-back.onrender.com/doctors", formdata);
     alert("Doctor Added Successfully");
-    
+
     setNewdoctor(formdata);
+  }
+
+  async function deletedata(id){
+    await axios.delete(`https://doc-back.onrender.com/doctors/${id}`)
+    alert('doctor deleted')
+    setNewdoctor('deleted'+ id);
   }
 
   return (
@@ -71,7 +77,7 @@ function Addnewdoctor() {
         />
         <button type="submit"> Add Doctor</button>
       </form>
-      <Home newdoctor={newdoctor} />
+      <Home newdoctor={newdoctor} ondel={deletedata} />
     </div>
   );
 }

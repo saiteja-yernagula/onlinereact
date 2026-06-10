@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Doctorcard from "./Doctorcard";
 import axios from "axios";
-function Home({ newdoctor }) {
+function Home({ newdoctor,ondel }) {
   let [doctors, setDoctors] = useState([]);
   let [search, setSearch] = useState("");
   let [specialization, setSpecialization] = useState("");
@@ -12,14 +12,14 @@ function Home({ newdoctor }) {
     setDoctors(apidata.data);
   }
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
 
   useEffect(() => {
-    if (newdoctor) {
-      setDoctors((prev) => [...prev, newdoctor]);
-    }
+    
+     fetchdata()
+    
   }, [newdoctor]);
 
   const filtereddoctors=doctors.filter((val)=>{
@@ -62,6 +62,7 @@ function Home({ newdoctor }) {
                 gender={doctor.gender}
                 specialization={doctor.specialization}
                 id={doctor.id}
+                ondel={ondel}
               />
             );
           })}
