@@ -31,6 +31,20 @@ function Addnewdoctor() {
     setNewdoctor('deleted'+ id);
   }
 
+  async function updatedata(id){
+    let data={
+    name: "Manohar",
+    age: "57",
+    gender: "Male",
+    salary: "8900000",
+    specialization: "Surgeon",
+    id: Date.now()
+    }
+    await axios.put(`https://doc-back.onrender.com/doctors/${id}`,data)
+    alert('updated')
+        setNewdoctor('updaated'+ id);
+  }
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Add New Doctor</h1>
@@ -77,7 +91,7 @@ function Addnewdoctor() {
         />
         <button type="submit"> Add Doctor</button>
       </form>
-      <Home newdoctor={newdoctor} ondel={deletedata} />
+      <Home newdoctor={newdoctor} ondel={deletedata} upd={updatedata} />
     </div>
   );
 }

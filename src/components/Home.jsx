@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Doctorcard from "./Doctorcard";
 import axios from "axios";
-function Home({ newdoctor,ondel }) {
+function Home({ newdoctor,ondel,upd }) {
   let [doctors, setDoctors] = useState([]);
   let [search, setSearch] = useState("");
   let [specialization, setSpecialization] = useState("");
@@ -63,6 +63,7 @@ function Home({ newdoctor,ondel }) {
                 specialization={doctor.specialization}
                 id={doctor.id}
                 ondel={ondel}
+                upd={upd}
               />
             );
           })}
