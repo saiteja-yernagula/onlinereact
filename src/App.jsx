@@ -6,12 +6,17 @@ import { Route, Routes } from "react-router-dom"
 import Doctordetails from "./components/Doctordetails"
 import { useState } from "react"
 import Protectedroute from "./components/Protectedroute"
-
+import useCounter from "./components/useCounter"
 function App(){
   const [islogin,setIslogin]=useState(false)
+  const {count,increment,decrement}=useCounter()
   return (
    <div>
     <Navbar/>
+    {count}
+    <button onClick={increment}>inc</button>
+    <button onClick={decrement}>dec</button>
+    
     <button onClick={()=>setIslogin(true)}>click to login</button>
     <Routes>
       <Route path='/' element={<Section/>}/>

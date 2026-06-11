@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Doctorcard from "./Doctorcard";
 import axios from "axios";
+import { useMemo } from "react";
 function Home({ newdoctor,ondel,upd }) {
   let [doctors, setDoctors] = useState([]);
   let [search, setSearch] = useState("");
@@ -22,15 +23,18 @@ function Home({ newdoctor,ondel,upd }) {
     
   }, [newdoctor]);
 
-  const filtereddoctors=doctors.filter((val)=>{
-    console.log()
-    console.log(search)
+  const filtereddoctors=useMemo(()=>{
+    return doctors.filter((val)=>{
+    console.log('running')
     return (
       val.name.toLowerCase().includes(search.toLowerCase())
       &&
       (specialization=="" || val.specialization==specialization)
     )
   })
+
+  },[search,specialization,doctors])
+  
   return (
     <div>
       <div className="filters">
