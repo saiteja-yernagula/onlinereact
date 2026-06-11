@@ -69,7 +69,8 @@ function Home({ newdoctor,ondel,upd }) {
           })}
         </div>
       ) : (
-        <h1>no doctors found</h1>
+        <h1>no doctors found
+        </h1>
       )}
     </div>
   );
