@@ -14,7 +14,7 @@ function Doctorcard({name,specialization,gender,id,ondel,upd}) {
         <p>{gender}</p>
         <button onClick={()=>navigate(`/doctor/${id}`)}>view details</button>
         <button onClick={()=>{ondel(id)}}>Del</button>
-        <button onClick={()=>upd(id)}>upd</button>
+        <button onClick={()=>upd(id)}>update</button>
     </div>
   )
 }
