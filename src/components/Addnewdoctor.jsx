@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Home from "./Home";
 import axios from "axios";
+import { DoctorContext } from "./DoctorProvider";
+import { useContext } from "react";
 function Addnewdoctor() {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
@@ -8,6 +10,7 @@ function Addnewdoctor() {
   const [salary, setSalary] = useState("");
   const [specialization, setSpecialization] = useState("");
   // let [newdoctor, setNewdoctor] = useState(null);
+  let {setNewdoctor}=useContext(DoctorContext)
 
   async function handlesubmit(e) {
     e.preventDefault();
@@ -91,7 +94,8 @@ function Addnewdoctor() {
         />
         <button type="submit"> Add Doctor</button>
       </form>
-      <Home newdoctor={newdoctor} ondel={deletedata} upd={updatedata} />
+      <Home  />
+      {/* <Home newdoctor={newdoctor} ondel={deletedata} upd={updatedata} /> */}
     </div>
   );
 }
