@@ -7,7 +7,7 @@ function Addnewdoctor() {
   const [age, setAge] = useState("");
   const [salary, setSalary] = useState("");
   const [specialization, setSpecialization] = useState("");
-  let [newdoctor, setNewdoctor] = useState(null);
+  // let [newdoctor, setNewdoctor] = useState(null);
 
   async function handlesubmit(e) {
     e.preventDefault();
@@ -25,25 +25,25 @@ function Addnewdoctor() {
     setNewdoctor(formdata);
   }
 
-  async function deletedata(id){
-    await axios.delete(`https://doc-back.onrender.com/doctors/${id}`)
-    alert('doctor deleted')
-    setNewdoctor('deleted'+ id);
-  }
+  // async function deletedata(id){
+  //   await axios.delete(`https://doc-back.onrender.com/doctors/${id}`)
+  //   alert('doctor deleted')
+  //   setNewdoctor('deleted'+ id);
+  // }
 
-  async function updatedata(id){
-    let data={
-    name: "Manohar",
-    age: "57",
-    gender: "Male",
-    salary: "8900000",
-    specialization: "Surgeon",
-    id: Date.now()
-    }
-    await axios.put(`https://doc-back.onrender.com/doctors/${id}`,data)
-    alert('updated')
-        setNewdoctor('updaated'+ id);
-  }
+  // async function updatedata(id){
+  //   let data={
+  //   name: "Manohar",
+  //   age: "57",
+  //   gender: "Male",
+  //   salary: "8900000",
+  //   specialization: "Surgeon",
+  //   id: Date.now()
+  //   }
+  //   await axios.put(`https://doc-back.onrender.com/doctors/${id}`,data)
+  //   alert('updated')
+  //       setNewdoctor('updaated'+ id);
+  // }
 
   return (
     <div>
