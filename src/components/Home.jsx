@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import Doctorcard from "./Doctorcard";
 import axios from "axios";
 import { useMemo } from "react";
-function Home({ newdoctor,ondel,upd }) {
+import { DoctorContext } from "./DoctorProvider";
+import { useContext } from "react";
+function Home() {
   let [doctors, setDoctors] = useState([]);
   let [search, setSearch] = useState("");
   let [specialization, setSpecialization] = useState("");
+   let {newdoctor}=useContext(DoctorContext)
   async function fetchdata() {
    
     let apidata=await axios.get('https://doc-back.onrender.com/doctors')
@@ -66,8 +69,7 @@ function Home({ newdoctor,ondel,upd }) {
                 gender={doctor.gender}
                 specialization={doctor.specialization}
                 id={doctor.id}
-                ondel={ondel}
-                upd={upd}
+               
               />
             );
           })}
