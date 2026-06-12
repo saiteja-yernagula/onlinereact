@@ -11,9 +11,13 @@ function Home() {
    let {newdoctor}=useContext(DoctorContext)
   async function fetchdata() {
    
-    let apidata=await axios.get('https://doc-back.onrender.com/doctors')
-    // console.log(apidata)
-    setDoctors(apidata.data);
+    try{
+      let apidata=await axios.get('https://doc-back.onrender.com/doctors')
+      setDoctors(apidata.data);
+    }catch(err){
+      alert('failed')
+      console.log(err,'api is failed to fetch')
+    }
   }
 
   // useEffect(() => {

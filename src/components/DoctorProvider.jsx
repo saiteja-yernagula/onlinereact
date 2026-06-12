@@ -1,35 +1,44 @@
-import { createContext,useState } from "react"
-import axios from "axios"
+import { createContext, useState } from "react";
+import axios from "axios";
 
-export const DoctorContext=createContext()
+export const DoctorContext = createContext();
 
-function DoctorProvider({children}) {
-   let [newdoctor, setNewdoctor] = useState(null);
-     async function deletedata(id){
-    await axios.delete(`https://doc-back.onrender.com/doctors/${id}`)
-    alert('doctor deleted')
-    setNewdoctor('deleted'+ id);
-  }
-  async function updatedata(id){
-    let data={
-    name: "Manohar",
-    age: "57",
-    gender: "Male",
-    salary: "8900000",
-    specialization: "Surgeon",
-    id: Date.now()
+function DoctorProvider({ children }) {
+  let [newdoctor, setNewdoctor] = useState(null);
+  async function deletedata(id) {
+    try {
+      await axios.delete(`https://doc-back.onrender.com/doctors/${id}`);
+      alert("doctor deleted");
+      setNewdoctor("deleted" + id);
+    } catch (err) {
+      console.log(err);
     }
-    await axios.put(`https://doc-back.onrender.com/doctors/${id}`,data)
-    alert('updated')
-        setNewdoctor('updaated'+ id);
   }
-
+  async function updatedata(id) {
+    let data = {
+      name: "Manohar",
+      age: "57",
+      gender: "Male",
+      salary: "8900000",
+      specialization: "Surgeon",
+      id: Date.now(),
+    };
+    try {
+      await axios.put(`https://doc-back.onrender.com/doctors/${id}`, data);
+      alert("updated");
+      setNewdoctor("updaated" + id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
-    <DoctorContext.Provider value={{newdoctor,setNewdoctor,updatedata,deletedata}}>
-        {children}
+    <DoctorContext.Provider
+      value={{ newdoctor, setNewdoctor, updatedata, deletedata }}
+    >
+      {children}
     </DoctorContext.Provider>
-  )
+  );
 }
 
-export default DoctorProvider
+export default DoctorProvider;
