@@ -26,9 +26,9 @@ function DoctorProvider({children}) {
 
 
   return (
-    <DoctorContext.provider value={{newdoctor,setNewdoctor,updatedata,deletedata}}>
+    <DoctorContext.Provider value={{newdoctor,setNewdoctor,updatedata,deletedata}}>
         {children}
-    </DoctorContext.provider>
+    </DoctorContext.Provider>
   )
 }
 
